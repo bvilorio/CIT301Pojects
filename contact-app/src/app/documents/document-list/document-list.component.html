@@ -3,12 +3,13 @@
   <div class="panel-heading">
     <div class="row pad-left-right">
       <span class="pull-left title">Documents</span>
-      <a class="btn btn-success pull-right">Add Document</a>
+      <a [routerLink]="['new']" class="btn btn-success pull-right">Add Document</a>
     </div>
   </div>
   <div class="panel-body">
     <div class="center-panel">
 
+      <ca-document-item *ngFor="let document of documents;let i = index" [document]="document" [documentIdx]="i"></ca-document-item>
       <!-- add tag to display a list of document-item components here -->
 
     </div>

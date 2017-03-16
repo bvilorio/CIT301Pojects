@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DocumentsService} from "../documents.service";
 
 @Component({
   selector: 'ca-document-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentListComponent implements OnInit {
 
-  constructor() { }
+  documents : Document[]=[];
+
+  constructor(private ds:DocumentsService) { }
 
   ngOnInit() {
+
+    this.documents = this.ds.getDocuments();
   }
 
 }

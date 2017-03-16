@@ -1,13 +1,24 @@
 import { Injectable } from '@angular/core';
-import {Contact} from "./contact";
-import {isNumber} from "util";
+import { Contact} from './contact';
 
 @Injectable()
 export class ContactsService {
+  private contacts: Contact[] =[];
 
-  contacts: Contact[]=[];
+  constructor() {
+    this.contacts = this.getContacts();
+  }
 
-  constructor() { }
+  getContact(idx:number){
+    //this function receives and index or position of a Contact object
+    // in the contacts array and returns the Contact object at the specified index
+    //position in the list.
+    return this.contacts.find((contact:Contact): boolean=>{return contact.name===idx});
+
+    // return this.contacts.find(function(contact:Contact): boolean {return contact.name===idx});
+    //return this.contacts[idx]; // added
+  }
+
 
   getContacts() {
     // individual contacts
@@ -65,11 +76,6 @@ export class ContactsService {
     return 0;
 
   }
-
-  getContact(idx: number){
-
-    return Contact[idx];
-    }
 
 }
 

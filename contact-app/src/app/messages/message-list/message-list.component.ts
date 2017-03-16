@@ -13,10 +13,11 @@ export class MessageListComponent implements OnInit {
 
   messages : Message[]=[];
 
-  constructor() { }
+  constructor( private ms:MessagesService) { }
 
   ngOnInit() {
 
+    this.messages = this.ms.getMessages();
 
   }
 

@@ -9,6 +9,7 @@ import {extractMessages} from "@angular/compiler/src/i18n/extractor_merger";
 export class DocumentItemComponent implements OnInit {
 
   @Input() document:Document;
+  @Input() documentIdx:number;
   constructor() { }
 
   ngOnInit() {

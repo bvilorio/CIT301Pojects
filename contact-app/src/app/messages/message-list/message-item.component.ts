@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Message} from "@angular/compiler/src/i18n/i18n_ast";
 
 @Component({
   selector: 'ca-message-item',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageItemComponent implements OnInit {
 
-  message;
+  @Input() message: Message;
 
   constructor() { }
 

@@ -1,11 +1,11 @@
 <div class="row">
   <div class="col-md-5">
-    <ca-contact-list (selectedContact)="selectedContact = $event"></ca-contact-list>
+    <ca-contact-list></ca-contact-list>
   </div>
   <div class="co-xs-1"></div>
-  <div class="col-xs-6" *ngIf="selectedContact" style="..">
-    <ca-contact-detail [selectedContact]="selectedContact" *ngIf="selectedContact.group == null"></ca-contact-detail>
-    <ca-contact-group [selectedContact]="selectedContact" *ngIf="selectedContact.group != null"></ca-contact-group>
-  </div>
+
+
+    <router-outlet></router-outlet>
+
 
 </div>
