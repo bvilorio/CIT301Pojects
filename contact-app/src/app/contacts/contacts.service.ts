@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Contact} from './contact';
+import 'rxjs/Rx';
+
 
 @Injectable()
 export class ContactsService {
   private contacts: Contact[] =[];
+  currentContact : Contact;
+  getContactsEmitter = new EventEmitter<Contact[]>();
 
   constructor() {
     this.contacts = this.getContacts();
+    this.currentContact = new Contact("25", "Brayan Vilorio", "vil13003@byui.edu", "561-232-2322","../../images/bigbg.jpg", null)
   }
 
   getContact(idx:number){
@@ -17,6 +22,11 @@ export class ContactsService {
 
     // return this.contacts.find(function(contact:Contact): boolean {return contact.name===idx});
     //return this.contacts[idx]; // added
+  }
+
+  getCurrentContact(){
+
+    return this.currentContact;
   }
 
 
@@ -77,6 +87,33 @@ export class ContactsService {
 
   }
 
+  addContact(contact: Contact){
+    if(!contact)
+      return;
+    this.contacts.push(contact);
+    this.contacts = this.contacts.sort(this.compareNames);
+
+  }
+
+  updateContact(oldContact: Contact, newContact: Contact){
+    if(!oldContact || !newContact){
+      return;
+    }
+    this.contacts[this.contacts.indexOf(oldContact)] = newContact;
+    this.contacts = this.contacts.sort(this.compareNames);
+  }
+
+  deleteContact(contact: Contact){
+    if(!contact){
+      return;
+    }
+    const pos = this.contacts.indexOf(contact);
+    if (pos<0){ //contact not found in list?
+      return;
+    }
+    this.contacts.slice(pos,1);
+    this.contacts = this.contacts.sort(this.compareNames);
+  }
 }
 
 

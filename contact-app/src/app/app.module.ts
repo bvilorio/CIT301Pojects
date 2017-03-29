@@ -27,7 +27,7 @@ import {Subscription} from "rxjs";
 import {WindRef} from "./wind-ref.service";
 import { ContactGroupItemComponent } from './contacts/contact-group-item.component';
 import { ContactEditComponent } from './contacts/contact-edit/contact-edit.component';
-
+import {DndModule} from 'ng2-dnd';
 
 @NgModule({
   declarations: [
@@ -49,6 +49,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     DocumentEditComponent,
     ContactGroupItemComponent,
     ContactEditComponent,
+    MessageNewComponent,
 
 
   ],
@@ -56,6 +57,7 @@ import { ContactEditComponent } from './contacts/contact-edit/contact-edit.compo
     BrowserModule,
     FormsModule,
     HttpModule,
+    DndModule.forRoot(),
     routing
   ],
   providers: [

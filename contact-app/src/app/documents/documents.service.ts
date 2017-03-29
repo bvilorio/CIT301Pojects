@@ -21,5 +21,16 @@ export class DocumentsService {
     this.documents.splice(this.documents.indexOf(document),1);
   }
 
+  addDocument(document:Document){
+    if (document === null)
+      return;
+    this.documents.push(document);
+
+  }
+
+  updateDocument(oldDoc: Document,newDoc: Document){
+    this.documents[this.documents.indexOf(oldDoc)] = newDoc;
+  }
+
 
 }
